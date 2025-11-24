@@ -13,7 +13,7 @@ pipeline {
               CHECKOUT – ALWAYS ON JENKINS MASTER
            --------------------------------------------------------- */
         stage('Checkout Code') {
-            agent { label 'built-in-node' }
+            agent { label 'built-in' }
             steps {
                 git branch: 'main',
                     url: 'https://github.com/sailiash242403/flask-app.git'
