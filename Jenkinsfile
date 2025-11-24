@@ -13,7 +13,7 @@ pipeline {
               CHECKOUT – ALWAYS ON JENKINS MASTER
            --------------------------------------------------------- */
         stage('Checkout Code') {
-            agent { label 'master' }
+            agent { label 'built-in-node' }
             steps {
                 git branch: 'main',
                     url: 'https://github.com/sailiash242403/flask-app.git'
@@ -28,7 +28,7 @@ pipeline {
               BUILD & PUSH DOCKER IMAGE – BUILD AGENT
            --------------------------------------------------------- */
         stage('Build & Push Docker Image') {
-            agent { label 'build-node' }
+            agent { label 'jenkins-build-node' }
             environment {
                 BUILD_VERSION = "${env.BUILD_NUMBER}"
             }
@@ -59,7 +59,7 @@ pipeline {
                  DEPLOY – ALWAYS ON DEPLOYMENT AGENT
            --------------------------------------------------------- */
         stage('Deploy to Server') {
-            agent { label 'deploy-node' }
+            agent { label 'jenkins-deployment-node' }
             steps {
                 sh '''
                     echo "Logging in to DockerHub..."
