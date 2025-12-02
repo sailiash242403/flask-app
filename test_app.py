@@ -14,4 +14,4 @@ def test_home_status_code(client):
 def test_home_content(client):
     """Test if the home route returns the correct message."""
     response = client.get("/")
-    assert response.data.decode("utf-8") == "****************Hello from Flask CI/CD Pipeline****************"
+    assert response.data.decode("utf-8") == "****************Hello from Flask CI/CD Pipeline!!!!!****************"
